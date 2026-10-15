@@ -64,7 +64,7 @@ func main() {
 		}
 
 		writer.Header().Add("Content-Type", "application/json")
-		writer.Write(bytes)
+		_, _ = writer.Write(bytes)
 	})
 
 	go func() {

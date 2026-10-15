@@ -57,12 +57,13 @@ func main() {
 		out["request"] = outRequest
 		out["hostname"] = hostname
 
-		bytes, err := json.Marshal(out)
+		bytes, err := json.MarshalIndent(out, "", "    ")
 		if err != nil {
 			writer.WriteHeader(500)
 			return
 		}
 
+		log.Printf("%s\n", string(bytes))
 		writer.Header().Add("Content-Type", "application/json")
 		_, _ = writer.Write(bytes)
 	})
